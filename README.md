@@ -27,7 +27,8 @@ out: "Order confirmation and price!"
 
 ## Setup/Installation Requirements
 
-* Navigate to
+* Navigate to https://andrademichael.github.io/pizza-oct/
+* Make sure Javascript is enabled
 
 ## Known Bugs
 
