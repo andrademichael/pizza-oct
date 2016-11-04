@@ -23,9 +23,9 @@
             <label for="clientPaymentInput">Your method of payment:</label>
             <select class="form-control clientInfoInputs" id="clientPaymentInput">
               <option value="gold">Gold Bullion</option>
-              <option value="rareEarths">Rare Earth Metals</option>
-              <option value="amEx">American Express</option>
-              <option value="dwolla">Dwolla</option>
+              <option value="rare earth metals">Rare Earth Metals</option>
+              <option value="American Express">American Express</option>
+              <option value="Dwolla">Dwolla</option>
             </select>
             <button type="submit" class="btn btn-primary" id="clientInfoSubmitButton">Submit your info!</button>
           </form>
@@ -44,15 +44,9 @@
                 <option value="mega">1,000km(serves approximately 5 Earth-like planets)</option>
               </optgroup>
             </select>
-            <label for="clientPaymentInput">Your method of payment:</label>
-            <select class="form-control" id="clientPaymentInput">
-              <option>Gold Bullion</option>
-              <option>Rare Earth Metals</option>
-              <option>American Express</option>
-              <option>Dwolla</option>
+            <select multiple class="form-control" id="toppingsSelect">
             </select>
-            <button type="submit" id="pizzaOrderSubmitButton">Submit your info!</button>
-        </form>
+          </form>
         </div><!--row1col2-->
         <div class="col-sm-3 well" id="row1col3">
 
@@ -61,15 +55,15 @@
       <div class="row well" id="row2">
         <div class="col-md-4" id="row2col1">
           <ol id="clientList">Clients* Served:
-            <li>James Bond</li>
-            <li>President Obama</li>
+            <li><span id="jb">James Bond</span></li>
+            <li id="bo">President Obama</li>
           </ol>
           <p>*Yes, we do value our earlier clients more, they ordered from us before it was cool**.
             <p>**Yes, that was a joke.
         </div><!--row2col1-->
         <div class="col-md-8" id="row2col2">
-          <p id="#clientNameDisplay"></p>
-          <p id="#clientPaymentDisplay"></p>
+          <h2 id="clientNameDisplay"></h2>
+          <h4 id="clientPaymentDisplay"></h4>
           <p id="clientAddressDisplay"></p>
         </div><!--row2col2-->
       </div><!--row2-->

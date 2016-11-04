@@ -7,7 +7,7 @@ objectives
 BDD:
 1.User can add themselves to a list of customers
 
-2.
+2.User can select options for a pizza and click to see an order confirmation
 3.
 4.
 5.
