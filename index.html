@@ -3,19 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="libraries\bootstrap-3.3.7-dist\css\bootstrap.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
-    <script src="js\jquery-3.1.1.js" charset="utf-8"></script>
-    <script src="libraries\jquery-ui-1.12.1\jquery-ui.js" charset="utf-8"></script>
-    <script src="js\scripts.js" charset="utf-8"></script>
+    <script src="js/jquery-3.1.1.js" charset="utf-8"></script>
+    <script src="libraries/jquery-ui-1.12.1/jquery-ui.js" charset="utf-8"></script>
+    <script src="js/scripts.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="libraries/bootstrap-3.3.7-dist/css/bootstrap.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" title="no title" charset="utf-8">
     <title>Sky Pizza</title>
   </head>
   <body>
-    <h1>Pizza Pie in the Sky, we can go twenty thousand times as high!</h1>
-    <div class="container-fluid">
-      <div class="row well" id="row1">
-        <div class="col-sm-3" id="row1col1">
+    <div class="jumbotron">
+      <h2>Pizza Pie in the Sky, we can go twenty thousand times as high!</h1>
+      <h3>We will get you your pizza in under 60 minutes - <em>anywhere in* the world</em>
+    </div>
+    <div class="container">
+      <div class="row" id="row1">
+        <div class="col-md-3 well" id="row1col1">
+          <button class="btn btn-success" id="newClientButton">Register New Client</button>
           <form id="clientInfoForm">
+            <h3 id="welcome">New Client Detected via Facial Recognition and DNA Analysis. Welcome!</h3>
             <label for="clientNameInput">Your Name:</label>
             <input class="form-control clientInfoInputs" type="text" id="clientNameInput">
             <label for="clientAddressInput">Your Address(delivery to surface of Earth only)</label>
@@ -29,8 +34,19 @@
             </select>
             <button type="submit" class="btn btn-primary" id="clientInfoSubmitButton">Submit your info!</button>
           </form>
+          <ol id="clientList">Clients** Served:
+            <li><span id="jb">James Bond</span></li>
+            <li id="bo">President Obama</li>
+          </ol>
+          <div id="clientDetailsDisplay">
+            <h2 id="clientNameDisplay"></h2>
+            <h4 id="clientPaymentDisplay"></h4>
+            <p id="clientAddressDisplay"></p>
+          </div>
+          <p>**Other clients' identities are secret, we know where you live. Also yes, we do value our earlier clients more, they ordered from us before it was cool***.</p>
+          <p>***Yes, that was a joke.</p>
         </div><!--end row1col1-->
-        <div class="col-sm-3" id="row1col2">
+        <div class="col-md-6 well" id="row1col2">
           <form id="pizzaOrderForm">
             <label for="pizzaSizeSelect">Pizza Diameter:</label>
             <select class="form-control" id="pizzaSizeSelect">
@@ -49,28 +65,15 @@
             </select>
             <input type="checkbox" id="deliveryCheckbox" value=true>Do you want your pizza delivered? (<em>Again</em>, delivery area is the <em>surface</em> of the planet <em>Earth</em> <strong>only</strong>)</input>
             <br>
-            <button type="submit" class="btn btn-submit" id="pizzaOrderSubmitButton">Order the greatest pizza you will ever have again!</button>
+            <button type="submit" class="btn btn-danger" id="pizzaOrderSubmitButton">Order the greatest**** pizza you will ever have again!</button>
           </form>
         </div><!--row1col2-->
-        <div class="col-sm-6 well" id="row1col3">
-          <h2 id="orderDisplay"></h2>
+        <div class="col-md-3 well" id="row1col3">
+          <h3>Order Confirmation:</h2>
+          <h4 id="orderDisplay"></h2>
         </div><!--end row1col3-->
       </div><!--row1-->
-      <div class="row well" id="row2">
-        <div class="col-md-4" id="row2col1">
-          <ol id="clientList">Clients* Served:
-            <li><span id="jb">James Bond</span></li>
-            <li id="bo">President Obama</li>
-          </ol>
-          <p>*Yes, we do value our earlier clients more, they ordered from us before it was cool**.
-            <p>**Yes, that was a joke.
-        </div><!--row2col1-->
-        <div class="col-md-8" id="row2col2">
-          <h2 id="clientNameDisplay"></h2>
-          <h4 id="clientPaymentDisplay"></h4>
-          <p id="clientAddressDisplay"></p>
-        </div><!--row2col2-->
-      </div><!--row2-->
+      <p>*"The world" refers to the planet Earth, third planet of the star Sol, in the Milky Way Galaxy. "The world" refers to no other planet past, present, or future.</p>
     </div><!--container-->
   </body>
 </html>

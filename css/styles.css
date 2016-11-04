@@ -1,0 +1,34 @@
+p {
+  color: lightgray;
+}
+
+body {
+  background-image: url("../img/oven-3.jpg");
+  background-size: cover;
+}
+
+.jumbotron {
+  background-image: url("../img/drone.gif");
+  /*background-image: url("../img/dronedrawing.jpg");
+  background-image: url(" ../img/spaceship.jpg");*/
+  background-size: cover;
+  height: 150px;
+}
+
+.well {
+  background-color: #383a3d;
+  color: lightgray;
+  overflow-y: auto;
+}
+
+#newClientButton {
+  display: none;
+}
+
+#clientDetailsDisplay {
+  display: none;
+}
+
+#pizzaOrderForm {
+  display: none;
+}

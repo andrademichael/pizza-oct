@@ -48,7 +48,7 @@ var mushrooms =  new Topping("mushrooms", "basic");
 var olives =  new Topping("olives", "basic");
 var kalamataOlives = new Topping("Kalamata Olives", "premium")
 var ghostpeppers = new Topping("ghost peppers", "premium")
-var pickledRadish = new Topping("aickled radish", "premium")
+var pickledRadish = new Topping("pickled radish", "premium")
 var anchovies = new Topping("anchovies", "premium")
 var brie = new Topping("brie", "premium")
 
@@ -79,12 +79,10 @@ $(document).ready(function() {
     $("#clientAddressDisplay").text(barackObama.address);
     currentClient = barackObama;
   });
-  //Bond appears on pageload
-  $("#jb").click();
-  //populate toppings list with contents of var toppings
+  //populate multiselect with contents of toppings[]
 
-toppings.forEach(function(topping) {
-  $("#toppingsSelect").append("<option value='" +  topping.toppingTier + "'>" + topping.toppingName + " -- " + topping.toppingTier);
+  toppings.forEach(function(topping) {
+    $("#toppingsSelect").append("<option value='" +  topping.toppingTier + "'>" + topping.toppingName + " -- " + topping.toppingTier);
 });
 
   //user clicks #clientInfoSubmitButton
@@ -94,33 +92,46 @@ toppings.forEach(function(topping) {
     var newClientName = $("#clientNameInput").val();
     var newClientAddress = $("#clientAddressInput").val();
     var newClientPayment = $("#clientPaymentInput").val();
-    //assign collected inputs to new Client object
-    var newClient = new Client(newClientName, newClientAddress, newClientPayment);
-    //add new client's name to the list
-    $("#clientList").append("<li>" + newClient.clientName + "</li>");
-    //attach a click handler to display client's info
-    $("#clientList li").last().click(function() {
-      $("#clientNameDisplay").text("Client Name: " + newClient.clientName);
-      $("#clientPaymentDisplay").text(newClient.clientName + " pays with " + newClient.paymentMethod + ".");
-      $("#clientAddressDisplay").text(newClient.address);
+    //input validation
+    console.log(newClientName, newClientAddress, newClientPayment);
+    if (!newClientName || !newClientAddress || !newClientPayment) {
+      $("#clientNameInput #clientAddressInput").addClass("has-error");
+      $("#welcome").text("Make sure you have all fields filled out. We already know the answers, but it's for liability.")
+    } else {
+      //assign collected inputs to new Client object
+      var newClient = new Client(newClientName, newClientAddress, newClientPayment);
       currentClient = newClient;
-    });
-  });
+      //add new client's name to the list...
+      $("#clientList").append("<li>" + newClient.clientName + "</li>");
+      //...then attach a click handler to display client's info later
+      $("#clientList li").last().click(function() {
+        $("#clientNameDisplay").text("Client Name: " + newClient.clientName);
+        $("#clientPaymentDisplay").text(newClient.clientName + " pays with " + newClient.paymentMethod + ".");
+        $("#clientAddressDisplay").text(newClient.address);
+        currentClient = newClient;
+      });
+      //hide form and show details
+      $("#clientInfoForm").fadeOut(1500);
+      $("#clientDetailsDisplay").fadeIn(1100);
+      $("#newClientButton").fadeIn(1100);
+      $("#pizzaOrderForm").fadeIn(1500);
+    }; //end error-catching if-else statement
+  });//end client info form
 
-  //user clicks #pizzaOrderSubmitButton
-  $("#pizzaOrderForm").submit(function(event) {
+    //When someone clicks #pizzaOrderSubmitButton
+  $("#pizzaOrderSubmitButton").click(function(event) {
     event.preventDefault();
     console.log("pizza order Form running")
     //collect inputs
     console.log(currentClient);
     var sizeInput = parseFloat($("#pizzaSizeSelect").val());
     var toppingsInput = $("#toppingsSelect").val();
-    deliveryInput = $("#deliveryCheckbox").val();
+    var deliveryInput = $("#deliveryCheckbox").val();
     //create Pizza object
     newPizza = new Pizza(sizeInput, toppingsInput, deliveryInput);
     console.log(newPizza);
     //run pizza.cost to calculate total and display value somewhere big
     var orderCost = newPizza.cost();
     $("#orderDisplay").text("Thanks for your order, " + currentClient.clientName + "! $" + orderCost + " will be your total. Don't worry about sending payment, we know where you keep your" + currentClient.paymentMethod + ".");
-  });
-});
+  });//end order form submit
+});//end document ready
