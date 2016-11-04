@@ -1,0 +1,14 @@
+
+
+var Topping = function(name, tier) {
+  this.toppingName = name;
+  this.toppingTier = tier;
+}
+
+Pizza.prototype.toppingsCost = function () {
+
+};
+
+Pizza.prototype.cost = function () {
+  return (size + toppings * )
+};

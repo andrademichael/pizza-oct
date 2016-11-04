@@ -35,17 +35,21 @@
             <label for="pizzaSizeSelect">Pizza Diameter:</label>
             <select class="form-control" id="pizzaSizeSelect">
               <optgroup label="Microscopic:">
-                <option value="nano">50nm(serves approximately 5 mammalian cells)</option>
-                <option value="micro">250μm(serves approximately 5 water bears)</option>
+                <option value=".000000050">50nm(serves approximately 5 prokaryotes)</option>
+                <option value=".000250">250μm(serves approximately 5 tardigrades)</option>
               </optgroup>
               <optgroup label="Macroscopic:">
-                <option value="dec">1m(serves approximately 5 humans)</option>
-                <option value="hex">16m(serves approximately 5 elephants)</option>
-                <option value="mega">1,000km(serves approximately 5 Earth-like planets)</option>
+                <option value="1">1m(serves approximately 5 humans)</option>
+                <option value="16">16m(serves approximately 5 elephants)</option>
+                <option value="1000">1,000km(serves approximately 5 Earth-like planets)</option>
               </optgroup>
             </select>
+            <label for="toppingsSelect">Choose your topping(s)! Basic - $(1x10^3)/cm² Premium - $(1x10^4)/cm²</label>
             <select multiple class="form-control" id="toppingsSelect">
             </select>
+            <input type="checkbox" id="deliveryCheckbox" value=true>Do you want your pizza delivered? (<em>Again</em>, delivery area is the <em>surface</em> of the planet <em>Earth</em> <strong>only</strong>)</input>
+            <br>
+            <button type="submit" class="btn btn-danger" id="pizzaOrderSubmitButton">Order the greatest pizza you will ever have again!</button>
           </form>
         </div><!--row1col2-->
         <div class="col-sm-3 well" id="row1col3">
