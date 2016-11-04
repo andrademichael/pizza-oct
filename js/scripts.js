@@ -3,34 +3,38 @@ var Client = function(name, address, paymentMethod) {
   this.clientName = name;
   this.address = address;
   this.paymentMethod = paymentMethod;
-}
+};
 
 var Topping = function(name, tier) {
   this.toppingName = name;
   this.toppingTier = tier;
-}
+};
 
 var Pizza = function(pizzaSize, toppings, delivery) {
   this.pizzaSize = pizzaSize;
   this.toppings = toppings;
   this.delivery = delivery;
   this.price = 0;
-}
+};
 
 Pizza.prototype.cost = function() {
-  this.toppings.forEach(function(topping) {
-    if (topping.toppingTier === "basic") {
-      this.price += 1000;
-    } else if (topping.toppingTier === "premium") {
-      this.price += 10000;
+  price = 0;
+  (this.toppings).forEach(function(topping) {
+    console.log(topping);
+    if (topping == "basic") {
+      price += 1000;
+      console.log(this.price);
+    } else if (topping == "premium") {
+      price += 10000;
+      console.log(this.price);
     }
   });
-  this.cost += (this.pizzaSize * .5 * 3.1415927) ^ 2;
-    if (this.delivery === true) {
-      this.price += 7;
+  price += ((this.pizzaSize * this.pizzaSize) * .5 * 3.14159);
+    if (this.delivery === "true") {
+      price += 7;
     }
-  return this.cost;
-}
+  return price.toFixed(2);
+};
 
 //toppings list
 var pepperoni = new Topping("pepperoni", "basic");
@@ -49,6 +53,7 @@ var anchovies = new Topping("anchovies", "premium")
 var brie = new Topping("brie", "premium")
 
 var toppings = [pepperoni, cheese, sauce, pineapple, bacon, garlic, peppers, mushrooms, olives, kalamataOlives, ghostpeppers, pickledRadish, anchovies, brie];
+console.log(toppings);
 
 //frontend
 //previous customers info
@@ -79,7 +84,7 @@ $(document).ready(function() {
   //populate toppings list with contents of var toppings
 
 toppings.forEach(function(topping) {
-  $("#toppingsSelect").append("<option value='" +  topping.toppingName + "'>" + topping.toppingName + " -- " + topping.toppingTier);
+  $("#toppingsSelect").append("<option value='" +  topping.toppingTier + "'>" + topping.toppingName + " -- " + topping.toppingTier);
 });
 
   //user clicks #clientInfoSubmitButton
@@ -108,8 +113,8 @@ toppings.forEach(function(topping) {
     console.log("pizza order Form running")
     //collect inputs
     console.log(currentClient);
-    sizeInput = parseFloat($("#pizzaSizeSelect").val());
-    toppingsInput = $("#toppingsSelect").val();
+    var sizeInput = parseFloat($("#pizzaSizeSelect").val());
+    var toppingsInput = $("#toppingsSelect").val();
     deliveryInput = $("#deliveryCheckbox").val();
     //create Pizza object
     newPizza = new Pizza(sizeInput, toppingsInput, deliveryInput);

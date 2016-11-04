@@ -9,7 +9,3 @@ BDD:
  1a) Clicking a name on the list displays that customer's info and sets them as the current customer ordering.
 
 2.User can select options for a pizza and click to see an order confirmation and price.
-3.
-4.
-5.
-6.
