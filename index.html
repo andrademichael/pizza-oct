@@ -3,13 +3,76 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="libraries\bootstrap-3.3.7-dist\css\bootstrap.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
     <script src="js\jquery-3.1.1.js" charset="utf-8"></script>
+    <script src="libraries\jquery-ui-1.12.1\jquery-ui.js" charset="utf-8"></script>
     <script src="js\scripts.js" charset="utf-8"></script>
-    <title>Pizza</title>
+    <title>Sky Pizza</title>
   </head>
   <body>
     <h1>Pizza Pie in the Sky</h1>
+    <div class="container-fluid">
+      <div class="row well" id="row1">
+        <div class="col-sm-3" id="row1col1">
+          <form id="clientInfoForm">
+            <label for="clientNameInput">Your Name:</label>
+            <input class="form-control clientInfoInputs" type="text" id="clientNameInput">
+            <label for="clientAddressInput">Your Address(delivery to surface of Earth only)</label>
+            <input class="form-control clientInfoInputs" type="text" id="clientAddressInput">
+            <label for="clientPaymentInput">Your method of payment:</label>
+            <select class="form-control clientInfoInputs" id="clientPaymentInput">
+              <option value="gold">Gold Bullion</option>
+              <option value="rareEarths">Rare Earth Metals</option>
+              <option value="amEx">American Express</option>
+              <option value="dwolla">Dwolla</option>
+            </select>
+            <button type="submit" class="btn btn-primary" id="clientInfoSubmitButton">Submit your info!</button>
+          </form>
+        </div><!--row1col1-->
+        <div class="col-sm-6" id="row1col2">
+          <form id="pizzaOrderForm">
+            <label for="pizzaSizeSelect">Pizza Diameter:</label>
+            <select class="form-control" id="pizzaSizeSelect">
+              <optgroup label="Microscopic:">
+                <option value="nano">50nm(serves approximately 5 mammalian cells)</option>
+                <option value="micro">250μm(serves approximately 5 water bears)</option>
+              </optgroup>
+              <optgroup label="Macroscopic:">
+                <option value="dec">1m(serves approximately 5 humans)</option>
+                <option value="hex">16m(serves approximately 5 elephants)</option>
+                <option value="mega">1,000km(serves approximately 5 Earth-like planets)</option>
+              </optgroup>
+            </select>
+            <label for="clientPaymentInput">Your method of payment:</label>
+            <select class="form-control" id="clientPaymentInput">
+              <option>Gold Bullion</option>
+              <option>Rare Earth Metals</option>
+              <option>American Express</option>
+              <option>Dwolla</option>
+            </select>
+            <button type="submit" id="pizzaOrderSubmitButton">Submit your info!</button>
+        </form>
+        </div><!--row1col2-->
+        <div class="col-sm-3 well" id="row1col3">
 
+        </div>
+      </div><!--row1-->
+      <div class="row well" id="row2">
+        <div class="col-md-4" id="row2col1">
+          <ol id="clientList">Clients* Served:
+            <li>James Bond</li>
+            <li>President Obama</li>
+          </ol>
+          <p>*Yes, we do value our earlier clients more, they ordered from us before it was cool**.
+            <p>**Yes, that was a joke.
+        </div><!--row2col1-->
+        <div class="col-md-8" id="row2col2">
+          <p id="#clientNameDisplay"></p>
+          <p id="#clientPaymentDisplay"></p>
+          <p id="clientAddressDisplay"></p>
+        </div><!--row2col2-->
+      </div><!--row2-->
+    </div><!--container-->
   </body>
 </html>
