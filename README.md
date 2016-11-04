@@ -6,8 +6,9 @@ objectives
 
 BDD:
 1.User can add themselves to a list of customers
+ 1a) Clicking a name on the list displays that customer's info and sets them as the current customer ordering.
 
-2.User can select options for a pizza and click to see an order confirmation
+2.User can select options for a pizza and click to see an order confirmation and price.
 3.
 4.
 5.

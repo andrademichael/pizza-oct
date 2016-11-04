@@ -18,18 +18,18 @@ var Pizza = function(pizzaSize, toppings, delivery) {
 }
 
 Pizza.prototype.cost = function() {
-  pizza.toppings.forEach(function(topping) {
+  this.toppings.forEach(function(topping) {
     if (topping.toppingTier === "basic") {
-      pizza.price += 1000;
+      this.price += 1000;
     } else if (topping.toppingTier === "premium") {
-      pizza.price += 10000;
+      this.price += 10000;
     }
   });
-  pizza.cost += (pizzaSize * .5 * 3.1415927) ^ 2;
-    if (pizza.delivery === true) {
-      pizza.price += 7;
+  this.cost += (this.pizzaSize * .5 * 3.1415927) ^ 2;
+    if (this.delivery === true) {
+      this.price += 7;
     }
-  return pizza.cost;
+  return this.cost;
 }
 
 //toppings list
@@ -54,6 +54,7 @@ var toppings = [pepperoni, cheese, sauce, pineapple, bacon, garlic, peppers, mus
 //previous customers info
 jamesBond = new Client("James Bond", "30 Wellington Square, Chelsea, London SW3 4NR, UK", "American Express")
 barackObama = new Client("Barack Obama", "1600 Pensylvania Ave NW, Washington, DC, 20500, USA", "gold bullion")
+//set default customer
 
 
 $(document).ready(function() {
@@ -64,14 +65,18 @@ $(document).ready(function() {
     $("#clientNameDisplay").text("Client Name: " + jamesBond.clientName);
     $("#clientPaymentDisplay").text(jamesBond.clientName + " pays with " +jamesBond.paymentMethod + ".");
     $("#clientAddressDisplay").text(jamesBond.address);
+    currentClient = jamesBond;
   });
   $("#bo").click(function() {
     console.log(barackObama.clientName);
     $("#clientNameDisplay").text("Client Name: " + barackObama.clientName);
     $("#clientPaymentDisplay").text(barackObama.clientName + " pays with " +barackObama.paymentMethod + ".");
     $("#clientAddressDisplay").text(barackObama.address);
+    currentClient = barackObama;
   });
-  //populate toppings list
+  //Bond appears on pageload
+  $("#jb").click();
+  //populate toppings list with contents of var toppings
 
 toppings.forEach(function(topping) {
   $("#toppingsSelect").append("<option value='" +  topping.toppingName + "'>" + topping.toppingName + " -- " + topping.toppingTier);
@@ -80,27 +85,37 @@ toppings.forEach(function(topping) {
   //user clicks #clientInfoSubmitButton
   $("#clientInfoForm").submit(function(event) {
     event.preventDefault();
+    //collect inputs from form
     var newClientName = $("#clientNameInput").val();
     var newClientAddress = $("#clientAddressInput").val();
     var newClientPayment = $("#clientPaymentInput").val();
+    //assign collected inputs to new Client object
     var newClient = new Client(newClientName, newClientAddress, newClientPayment);
-    console.log(newClient);
+    //add new client's name to the list
     $("#clientList").append("<li>" + newClient.clientName + "</li>");
+    //attach a click handler to display client's info
     $("#clientList li").last().click(function() {
-      console.log(newClient.clientName);
       $("#clientNameDisplay").text("Client Name: " + newClient.clientName);
-      $("#clientPaymentDisplay").text(newClient.clientName + " pays with " +newClient.paymentMethod + ".");
+      $("#clientPaymentDisplay").text(newClient.clientName + " pays with " + newClient.paymentMethod + ".");
       $("#clientAddressDisplay").text(newClient.address);
+      currentClient = newClient;
     });
   });
 
   //user clicks #pizzaOrderSubmitButton
-  $("#clientInfoFormGroup").submit(function(event) {
+  $("#pizzaOrderForm").submit(function(event) {
     event.preventDefault();
+    console.log("pizza order Form running")
     //collect inputs
-    //run pizza.cost
-    //display value somewhere big
-
-
+    console.log(currentClient);
+    sizeInput = parseFloat($("#pizzaSizeSelect").val());
+    toppingsInput = $("#toppingsSelect").val();
+    deliveryInput = $("#deliveryCheckbox").val();
+    //create Pizza object
+    newPizza = new Pizza(sizeInput, toppingsInput, deliveryInput);
+    console.log(newPizza);
+    //run pizza.cost to calculate total and display value somewhere big
+    var orderCost = newPizza.cost();
+    $("#orderDisplay").text("Thanks for your order, " + currentClient.clientName + "! $" + orderCost + " will be your total. Don't worry about sending payment, we know where you keep your" + currentClient.paymentMethod + ".");
   });
 });
